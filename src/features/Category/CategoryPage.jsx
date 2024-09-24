@@ -1,8 +1,5 @@
-import { useEffect } from "react";
 import Categories from "./Categories";
 import Category from "./Category";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAllCategory } from "../redux/adminAuth/adminActionSlice";
 import { useCategory } from "../admin/page/Categories/useCategory";
 
 function CategoryPage({ onClick }) {

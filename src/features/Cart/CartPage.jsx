@@ -14,7 +14,6 @@ function CartPage() {
   const { user } = useLocalStorage();
   const { cartItems, isPending: isLoading } = useCart();
 
-
   useEffect(() => {
       setUpdatedCart(cartItems);
   }, [cartItems]);
@@ -28,7 +27,7 @@ function CartPage() {
   };
 
   const subtotal = updatedCart?.reduce(
-    (acc, item) => acc + item.product.price * item.quantity,
+    (acc, item) => acc + item.product?.price * item.quantity,
     0
   );
 

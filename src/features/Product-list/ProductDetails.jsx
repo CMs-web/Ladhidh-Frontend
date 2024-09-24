@@ -1,10 +1,9 @@
 import { useState } from "react";
 import FreeDevSvg from "../../assets/ui/FreeDevSvg";
 import StarSvg from "../../assets/ui/StarSvg";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../Cart/cardSlice";
-import toast from "react-hot-toast";
+import { useAddCart } from "../Cart/useAddCart";
 
 function ProductDetails() {
   const [tempQty, setTempQty] = useState(1);
@@ -12,8 +11,9 @@ function ProductDetails() {
   const navigate = useNavigate();
 
   const { product } = useSelector((state) => state.productDetails);
+  const {addToCart} = useAddCart()
  
-  const { tittle, price, oldPrice, img } = product;
+  const { price, oldPrice, img } = product;
 
   async function handleCart() {
     const formData = {
@@ -21,19 +21,9 @@ function ProductDetails() {
       quantity: tempQty,
     };
 
-    try {
-      const myPromise = dispatch(addToCart(formData));
-
-      await toast.promise(myPromise, {
-        loading: "Adding to cart...",
-        success: "Product added to cart",
-        error: "Something went wrong",
-      });
-
+      addToCart(formData);
       navigate("/cart");
-    } catch (error) {
-      console.error(error);
-    }
+    
   }
 
   return (
@@ -42,10 +32,6 @@ function ProductDetails() {
         <img className="w-auto mx-auto h-[50vh]  opacity-85 " src={img} alt="" />
         <section className="bg-white h-52 pt-2 px-2 md:px-24 lg:px-48 reletive top-0 overflow-hidden pb-80 md:pb-56">
           <h1 className="font-semibold text-xl">{product.tittle|| product.title}</h1>
-          {/* <p className="my-2 text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p> */}
           <div className="flex items-center gap-3 font-semibold">
             <span className="flex items-center gap-1">
               <StarSvg /> 4.6

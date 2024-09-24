@@ -1,8 +1,3 @@
-import { useDispatch } from "react-redux";
-import {
-  allProducts,
-  removeProduct,
-} from "../../../redux/adminAuth/adminActionSlice";
 import { useState } from "react";
 import EditProductPopup from "./EditProductPopup";
 import { useDeleteProduct } from "./useDeleteProduct";

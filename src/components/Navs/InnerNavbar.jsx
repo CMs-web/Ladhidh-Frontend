@@ -1,7 +1,6 @@
 import { useLocation } from "react-router-dom";
 import BackButton from "../BackButton";
 import ShoppingCart from "../ShoppingCart";
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToFavorite, removeFromFavorite } from "../../features/Favorites/favoriteSlice";
 

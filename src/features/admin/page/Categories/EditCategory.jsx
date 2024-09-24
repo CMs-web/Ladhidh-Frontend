@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-// import { editSingleCategory } from "../../../redux/adminAuth/adminActionSlice";
 import { useUpdateCategory } from "./useUpdateCategory";
 import Spinner from "../../../../components/Spinner";
 

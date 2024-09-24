@@ -1,10 +1,3 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  addNewBanner,
-  fetchBanners,
-  removeBanner,
-} from "../../../redux/adminAuth/adminActionSlice";
 import Loader from "../../../../components/Loader";
 import { useBanners } from "./useBanners";
 import { useDeleteBanner } from "./useDeleteBanner";
@@ -12,7 +5,6 @@ import Spinner from "../../../../components/Spinner";
 import { useAddBaner } from "./useAddBanner";
 
 function BannerPage() {
-  const dispatch = useDispatch();
 
   const { banners, isPending } = useBanners();
   const { addNewBanner, isPending: addingBanner } = useAddBaner();

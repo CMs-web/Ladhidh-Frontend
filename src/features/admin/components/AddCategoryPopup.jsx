@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
-// import { addCategories } from "../../redux/adminAuth/adminActionSlice";
-import { useDispatch } from "react-redux";
 import { useAddCategory } from "../page/Categories/useAddCategory";
-import Loader from "../../../components/Loader";
 import Spinner from "../../../components/Spinner";
 
 function AddCategoryPopup() {

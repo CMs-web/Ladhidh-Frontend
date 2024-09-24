@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-// import { loginUser } from "../redux/userAuth/authSlice";
 import { useNavigate } from "react-router-dom";
 import OTPForm from "./OTPForm";
 import { useLogin } from "./useLogin";
@@ -34,7 +32,6 @@ const LoginForm = ({ setRegister }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // dispatch(loginUser(formData));
     loginUser(formData)
   };
 

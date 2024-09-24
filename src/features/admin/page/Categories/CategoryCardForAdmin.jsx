@@ -1,13 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchAllCategory,
-  removeCategory,
-} from "../../../redux/adminAuth/adminActionSlice";
-import { useEffect, useState } from "react";
-import AddCategoryPopup from "../../components/AddCategoryPopup";
+import {  useState } from "react";
 import EditCategory from "./EditCategory";
 import { useDeleteCategory } from "./useDeleteCategory";
-import Loader from "../../../../components/Loader";
 import Spinner from "../../../../components/Spinner";
 import { useCategory } from "./useCategory";
 

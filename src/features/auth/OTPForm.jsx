@@ -1,16 +1,11 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { fetchOtp } from "../redux/userAuth/authSlice";
 
 function OTPForm() {
-    const dispatch = useDispatch()
 
   const [formData, setFormData] = useState({
     otp: "",
     email: "",
   });
-
-  const { otp, email } = formData;
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -20,10 +15,6 @@ function OTPForm() {
     }));
   };
 
-  const handleSubmit = (e) => {
-      e.preventDefault();
-      dispatch(fetchOtp(email))
-  };
 
   return (
     <form onSubmit={handleSubmit}>

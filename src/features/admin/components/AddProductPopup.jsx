@@ -1,9 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-// import {
-//   addNewProduct,
-//   allProducts,
-// } from "../../redux/adminAuth/adminActionSlice";
 import { useCategory } from "../page/Categories/useCategory";
 import { useAddProduct } from "../page/products/useAddProduct";
 import Spinner from "../../../components/Spinner";
@@ -11,7 +6,6 @@ import Spinner from "../../../components/Spinner";
 export default function AddProductPopup() {
   const [isOpen, setIsOpen] = useState(false);
   const [image, setImage] = useState(null);
-  const dispatch = useDispatch();
 
   const { addNewProduct, isLoading, isSuccess } = useAddProduct();
   const { categories } = useCategory();

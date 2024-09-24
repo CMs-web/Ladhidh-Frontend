@@ -1,14 +1,11 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { allUsers } from "../../../redux/adminAuth/adminActionSlice";
+import React from "react";
+import { useSelector } from "react-redux";
 import SearchBar from "../../components/SearchBar";
 import { useUser } from "./useUser";
 import Loader from "../../../../components/Loader";
 
 
 export default function UsersPage() {
-  
-  const dispatch = useDispatch()
   const { users, isLoading } = useUser()
   const debouncedTerm = useSelector((state) => state.search.debouncedTerm);
 

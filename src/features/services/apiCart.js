@@ -5,6 +5,7 @@ const base_url = "/api/user/cart";
 const options = getHeader()
 
 export const addProductToCart = async (formData) => {
+  console.log(options)
   const res = await axios.post(base_url, formData, options);
   return res.data;
 };

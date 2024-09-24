@@ -6,9 +6,7 @@ import HomeSvg from "../../assets/ui/HomeSvg";
 import LogoutSvg from "../../assets/ui/LogoutSvg";
 import ProfileSvg from "../../assets/ui/ProfileSvg";
 import UserImage from "../../assets/images/avatar/5.jpg";
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import { useLocalStorage } from "../../features/auth/LocalStorageContext";
 
 function SideBar({ on, setOn }) {

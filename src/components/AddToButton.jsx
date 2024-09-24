@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { useAddCart } from "../features/Cart/useAddCart";
 import Spinner from "./Spinner";
 

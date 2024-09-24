@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-// import { registerUser } from "../redux/userAuth/authSlice";
 import { useRegister } from "./useRegister";
 
 function RegisterForm({ setRegister }) {
@@ -32,7 +30,6 @@ function RegisterForm({ setRegister }) {
 
   const handleVerify = (e) => {
     e.preventDefault();
-    // dispatch(registerUser(formData))
     registerUser(formData);
   };
 
