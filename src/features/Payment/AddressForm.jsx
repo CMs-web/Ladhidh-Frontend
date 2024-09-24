@@ -20,6 +20,13 @@ function AddressForm({
         streetAddress: editableAddress.streetAddress || "",
         postalCode: editableAddress.zipCode || "",
       });
+    } else {
+      // Reset the form for adding a new address
+      setFormData({
+        city: "",
+        streetAddress: "",
+        postalCode: "",
+      });
     }
   }, [editableAddress]);
 
@@ -33,19 +40,16 @@ function AddressForm({
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    handleSubmit(formData); // Submit the updated address
+    handleSubmit(formData); // Submit the updated or new address
     showFn(false); // Close the form after submission
   };
 
   return (
-    <div
-      onClick={() => {}}
-      className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50 overley"
-    >
+    <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
       <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-8 relative">
         <div
           onClick={() => showFn(false)}
-          className="text-black absolute right-10 top-7 "
+          className="text-black absolute right-10 top-7"
         >
           <i className="fa-regular fa-circle-xmark text-lg"></i>
         </div>
@@ -115,7 +119,7 @@ function AddressForm({
               type="submit"
               className="w-full bg-indigo-600 text-white py-2 rounded-md font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
-              Update Address
+              {editableAddress ? "Update Address" : "Add Address"}
             </button>
           </div>
         </form>

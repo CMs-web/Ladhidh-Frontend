@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Accordion from "./Accordion";
-import { DeliveryAddressProvider, useDeliveryAddress } from "./DeliveryAddressContext";
+import { useDeliveryAddress } from "./DeliveryAddressContext";
 
 // import CreditDebit from "./components/CreditDebit";
 // import GooglePay from "./components/GooglePay";

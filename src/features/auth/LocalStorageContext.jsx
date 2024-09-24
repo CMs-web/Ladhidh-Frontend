@@ -1,4 +1,4 @@
-// LocalStorageContext.js
+// LocalStorageContext.jsx
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 const LocalStorageContext = createContext();

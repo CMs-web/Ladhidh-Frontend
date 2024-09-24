@@ -1,11 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useAddCart } from "../features/Cart/useAddCart";
 import Spinner from "./Spinner";
+import { useLocalStorage } from "../features/auth/LocalStorageContext";
+import toast from "react-hot-toast";
 
 function AddToButton({ redirect = "/cart", ...props }) {
   const navigate = useNavigate();
 
   const { addToCart, isLoading } = useAddCart();
+  const {user} = useLocalStorage()
 
   const handleClick = async () => {
     const formData = {
@@ -13,11 +16,16 @@ function AddToButton({ redirect = "/cart", ...props }) {
       quantity: 1,
     };
 
-   addToCart(formData, {
-      onSuccess: () => {
-        navigate("/cart");
-      },
-    });
+    if (user) {
+      addToCart(formData, {
+         onSuccess: () => {
+           navigate("/cart");
+         },
+       });
+    } else {
+      toast.error("Please log in first")
+    }
+
   };
 
   return (

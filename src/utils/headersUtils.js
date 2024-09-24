@@ -1,5 +1,3 @@
-import { useLocalStorage } from "../features/auth/LocalStorageContext";
-import React from "react";
 
 export function getHeader() {
   const storedUser = localStorage.getItem("user");

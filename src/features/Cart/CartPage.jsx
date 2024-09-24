@@ -18,6 +18,12 @@ function CartPage() {
       setUpdatedCart(cartItems);
   }, [cartItems]);
 
+  useEffect(() => {
+    if (!user) {
+      toast.error("Please log in")
+    }
+  },[user])
+
   const handleQtyChange = (id, newQty) => {
     setUpdatedCart((prevCart) =>
       prevCart.map((item) =>
@@ -36,7 +42,6 @@ function CartPage() {
   }
 
   if (!user) {
-    toast.error("Please login once")
     return <AuthButton onClickOverlyHide="true" />;
   }
 
