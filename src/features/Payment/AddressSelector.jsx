@@ -1,14 +1,20 @@
 import { useState } from "react";
 import AddressForm from "./AddressForm";
 import { useDeliveryAddress } from "./DeliveryAddressContext";
+import { useLocalStorage } from "../auth/LocalStorageContext";
+import { useDeleteAddress } from "./useDeleteAddress";
 
-function AddressSelector({ addresses }) {
+function AddressSelector() {
   const [selectedAddressIndex, setSelectedAddressIndex] = useState(null); // Use index to track selected address
   const [showForm, setShowForm] = useState(false);
   const [editableAddress, setEditableAddress] = useState(null);
 
   const { updateAddress } = useDeliveryAddress();
+  const {deleteAddress} = useDeleteAddress()
+  const { user } = useLocalStorage()
 
+  const addresses = user?.address || [];
+  
   const handleAddressChange = (e) => {
     const selectedIndex = parseInt(e.target.value); // Get the index from the event
     const selected = addresses[selectedIndex]; // Use the index to find the selected address
@@ -18,17 +24,17 @@ function AddressSelector({ addresses }) {
 
   const handleEdit = (index) => {
     setEditableAddress(addresses[index]); // Set the selected address for editing
-    setShowForm(true); // Show the address form
+    setShowForm(true);  // Show the address form
   };
 
-  const handleNewAddress = (e) => {
-    e.preventDefault();
+  const handleNewAddress = (formData) => {
     setEditableAddress(null); // Set to null to ensure the form is empty
-    setShowForm(true); // Show the address form
+    setShowForm(true);   // Show the address form
+
   };
 
   return (
-    <div>
+    <div className="overflow-auto ax-h-96 min-h-40">
       <h1 className="font-medium">Your Address</h1>
       <form>
         {addresses.map((address, index) => (
@@ -50,19 +56,27 @@ function AddressSelector({ addresses }) {
               className="mr-2 accent-blue-500" // Custom styling for the radio button
             />
             <label htmlFor={`address-${index}`} className="font-medium">
-              {address.streetAddress}, {address.city}, {address.zipCode}
+              {address.addressLine1}, {address.addressLine2}, {address.city},{" "}
+              {address.state}, {address.zipCode}
             </label>
+            <button
+              type="button"
+              onClick={() => deleteAddress(address._id)}
+              className="float-end ml-5 border px-2 font-medium text-blue-500 border-blue-500 rounded hover:bg-blue-500 hover:text-white transition-colors"
+            >
+              Delete
+            </button>
             <button
               type="button" // Change button type to avoid form submission
               onClick={() => handleEdit(index)} // Edit button passes the index of the address
-              className="ml-5 border px-2 font-medium text-blue-500 border-blue-500 rounded hover:bg-blue-500 hover:text-white transition-colors"
+              className="float-end ml-5 border px-2 font-medium text-blue-500 border-blue-500 rounded hover:bg-blue-500 hover:text-white transition-colors"
             >
               Edit
             </button>
           </div>
         ))}
         <button
-          type="submit"
+          type="button"
           onClick={handleNewAddress}
           className="border px-2 py-1 font-medium text-blue-500 border-blue-500 rounded hover:bg-blue-500 hover:text-white transition-colors"
         >
@@ -74,12 +88,14 @@ function AddressSelector({ addresses }) {
         <p className="font-medium">Selected Address:</p>
         {selectedAddressIndex !== null ? (
           <p className="text-gray-700 font-semibold">
-            {addresses[selectedAddressIndex].streetAddress},{" "}
+            {addresses[selectedAddressIndex].addressLine1},{" "}
+            {addresses[selectedAddressIndex].addressLine2},{" "}
             {addresses[selectedAddressIndex].city},{" "}
+            {addresses[selectedAddressIndex].state},{" "}
             {addresses[selectedAddressIndex].zipCode}
           </p>
         ) : (
-          <p>No address selected.</p>
+          <p className="font-semibold">No address selected.</p>
         )}
       </div>
 

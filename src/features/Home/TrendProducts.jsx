@@ -12,7 +12,7 @@ function TrendProducts() {
       {isLoading ? (
         <Loader className={"h-40 w-full"} />
       ) : (
-        <div className="flex gap-5 flex-wrap justify-between w-full ">
+        <div className="flex gap-5 lg:gap-x-16 flex-wrap justify-start w-full ">
           {products?.map((dts, index) => {
             return (
               <Card

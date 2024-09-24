@@ -19,7 +19,7 @@ const Accordion = ({
   return (
     <div className="Favorites_List rounded-xl my-5 px-2 transition-all ">
       <div
-        className="w-full flex justify-between items-center py-2 focus:outline-none"
+        className="w-full flex justify-between items-center py-2 focus:outline-none "
         onClick={onSelect} // Trigger onSelect when clicked
       >
         <span className="text-sm font-semibold">
@@ -43,11 +43,7 @@ const Accordion = ({
         }}
       >
         <div className="pb-2 pl-5 text-sm text-gray-600">
-          {content ? (
-            <p>{content || element}</p>
-          ) : (
-              <AddressLayout/>
-          )}
+          {content ? <p>{content || element}</p> : <AddressLayout />}
         </div>
       </div>
     </div>

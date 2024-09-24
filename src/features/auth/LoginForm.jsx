@@ -51,11 +51,11 @@ const LoginForm = ({ setRegister }) => {
               className="block text-sm font-medium text-gray-700 mb-1"
               htmlFor="email"
             >
-              Email Address
+              Phone Number
             </label>
             <input
               id="number"
-              type="number"
+              type="tel"
               value={formData.number}
               onChange={handleChange}
               placeholder="Enter your email"
