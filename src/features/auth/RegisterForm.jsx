@@ -13,10 +13,10 @@ function RegisterForm({ setRegister }) {
   const [formData, setFormData] = useState({
     name: "",
     number: "",
-    Addres: "",
+    // Addres: "",
     password: "",
     email: "",
-    otp: "",
+    // otp: "",
   });
 
   // Handle input change for all form fields
@@ -97,7 +97,7 @@ function RegisterForm({ setRegister }) {
           />
         </div>
 
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label
             className="block text-sm font-medium text-gray-700 mb-1"
             htmlFor="Addres"
@@ -114,7 +114,7 @@ function RegisterForm({ setRegister }) {
             required
             autoComplete="off"
           />
-        </div>
+        </div> */}
 
         <div className="mb-4">
           <label

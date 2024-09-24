@@ -19,7 +19,8 @@ const LoginForm = ({ setRegister }) => {
 
   const [formData, setFormData] = useState({
     password: "",
-    email: "",
+    // email: "",
+    number:"",
   });
 
   const handleChange = (e) => {
@@ -53,9 +54,9 @@ const LoginForm = ({ setRegister }) => {
               Email Address
             </label>
             <input
-              id="email"
-              type="email"
-              value={formData.email}
+              id="number"
+              type="number"
+              value={formData.number}
               onChange={handleChange}
               placeholder="Enter your email"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-700 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
